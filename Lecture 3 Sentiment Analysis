@@ -1,6 +1,6 @@
-# Lecture 3 - Sentiment Analysis
+# Lecture 3
 
-### Perform sentiment analysis
+## Sentiment Analysis
 
 ```
 !pip install spacytextblob
@@ -65,4 +65,44 @@ df['Subjectivity'] = df['Sentiment'].apply(lambda x: x.subjectivity)
 
 # Display basic descriptive statistics for polarity and subjectivity
 print(df[['Polarity', 'Subjectivity']].describe())
+```
+
+## Word Clouds
+
+After running sentiment analysis, we can create word clouds for positive and negative sentences.
+
+```
+# prompt: create a word cloud for positive and another for negative comments
+
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+# Assuming 'results' from the previous code is available
+
+positive_comments = ""
+negative_comments = ""
+
+for sentence, sentiment in results:
+    if sentiment.polarity > 0:
+        positive_comments += sentence + " "
+    elif sentiment.polarity < 0:
+        negative_comments += sentence + " "
+
+# Generate word clouds
+wordcloud_positive = WordCloud(width=800, height=400, background_color="white").generate(positive_comments)
+wordcloud_negative = WordCloud(width=800, height=400, background_color="white").generate(negative_comments)
+
+# Display the word clouds
+plt.figure(figsize=(10, 5))
+plt.subplot(1, 2, 1)
+plt.imshow(wordcloud_positive, interpolation="bilinear")
+plt.axis("off")
+plt.title("Positive Comments")
+
+plt.subplot(1, 2, 2)
+plt.imshow(wordcloud_negative, interpolation="bilinear")
+plt.axis("off")
+plt.title("Negative Comments")
+
+plt.show()
 ```
