@@ -1,6 +1,6 @@
 # Lecture 3 - Sentiment Analysis
 
-This is how to perform sentiment analysis:
+### Perform sentiment analysis
 
 ```
 !pip install spacytextblob
@@ -29,4 +29,40 @@ for sentence in sentences:
 # Print the results
 for sentence, sentiment in results:
     print(f"Sentence: '{sentence}' - Sentiment: {sentiment}")
+```
+
+### Counting polarity
+
+```
+# prompt: count how many have positive polarity, and how many negative
+
+positive_count = 0
+negative_count = 0
+
+for sentence, sentiment in results:
+    if sentiment.polarity > 0:
+        positive_count += 1
+    elif sentiment.polarity < 0:
+        negative_count += 1
+
+print(f"Number of positive sentences: {positive_count}")
+print(f"Number of negative sentences: {negative_count}")
+```
+
+### Descriptive statistics
+
+```
+# prompt: basic descriptive stats of sentiment
+
+import pandas as pd
+
+# Create a DataFrame from the results
+df = pd.DataFrame(results, columns=['Sentence', 'Sentiment'])
+
+# Expand the Sentiment column into separate polarity and subjectivity columns
+df['Polarity'] = df['Sentiment'].apply(lambda x: x.polarity)
+df['Subjectivity'] = df['Sentiment'].apply(lambda x: x.subjectivity)
+
+# Display basic descriptive statistics for polarity and subjectivity
+print(df[['Polarity', 'Subjectivity']].describe())
 ```
