@@ -62,6 +62,12 @@ yp_df = yp_df.apply(simulate_interview, axis=1)
 yp_df.to_csv("RawData.csv", sep=',', index=False, encoding='utf-8')
 yp_df
 ```
+### Important!!!!
+
+At this step, before continuing, save the interview data on your computer. 
+Check **Files** in the left-hand menu and find **RawData.csv**
+If you have already completed the interview code, do not run **Simulate Interview** (this will regenerate the interviews and provide different data!)
+Instead, run the next code block **Read raw data**
 
 ### Read raw data
 
