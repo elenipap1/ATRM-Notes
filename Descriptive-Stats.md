@@ -38,8 +38,8 @@ Task: Make graph showing average answer length for questions 1 to 7 for differen
 ```
 import matplotlib.pyplot as plt
 ```
-# Assuming plwd_df is your DataFrame with interview responses and 'age' column
-# Calculate the average length of answers for each question (Question_1 to Question_7) for different age groups
+Assuming plwd_df is your DataFrame with interview responses and 'age' column
+Calculate the average length of answers for each question (Question_1 to Question_7) for different age groups
 
 ```
 average_answer_lengths_by_age = {}
