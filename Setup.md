@@ -2,8 +2,11 @@
 
 ## Installs & Imports
 ```
-!pip install langchain langchain-mistralai bunkatopics
-
+!pip install langchain langchain-mistralai
+!pip install git+https://github.com/palefo/topicviz
+from topicviz import TopicViz
+from sentence_transformers import SentenceTransformer
+embedding_model = SentenceTransformer("sentence-transformers/all-mpnet-base-v2")
 import pandas as pd
 from langchain_mistralai.chat_models import ChatMistralAI
 from google.colab import userdata
