@@ -1,4 +1,4 @@
-# Setup
+# 1. Setup
 
 ## Installs & Imports
 ```
